@@ -22,12 +22,23 @@ class MyScaffold extends StatelessWidget {
       canPop = "(navigator not found)";
     }
 
+    String impliesAppBarDismissal = "(n/a)";
+
+    // Simply uncommenting the following part of code will change the app behavior to be correct.
+    // build() is called more frequently and Navigator.canPop() will report correct values.
+    // final route = ModalRoute.of(context);
+    // if (route != null) {
+    //   impliesAppBarDismissal = route.impliesAppBarDismissal ? "true" : "false";
+    // } else {
+    //   impliesAppBarDismissal = "(route not found)";
+    // }
+
     // canPop should be false for HomeView and true for ChildView
     // in the rogue build call when putting app to background for iOS,
     // canPop is reported as true for both HomeView and ChildView.
 
     debugPrint(
-      "MyScaffold build. Brightness: $brightness. Child type: ${child.runtimeType.toString()}. Navigator canPop: $canPop",
+      "MyScaffold build. Brightness: $brightness. Child type: ${child.runtimeType.toString()}. Navigator canPop: $canPop. ModalRoute impliesAppBarDismissal: $impliesAppBarDismissal",
     );
     return Scaffold(
       appBar: AppBar(
