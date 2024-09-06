@@ -1,16 +1,7 @@
 # nav_can_pop
 
-A new Flutter project.
+A small Flutter project to demonstrate a Flutter bug on iOS. Or rather, what seems to be several bugs interacting.
 
-## Getting Started
+When you use `MediaQuery.platformBrightnessOf(context);` on Flutter with iOS, this causes an unwanted `build` call when you put the app to background. In that `build` call, `Navigator.canPop()` returns an incorrect value for the root view of the stack. If you use this value to determine whether to paint a custom Back button in AppBar, your UI will be incorrect, and have a back button where one is not expected.
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Demo video:
